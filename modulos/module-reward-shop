@@ -1,0 +1,16 @@
+// Using: the non loader .cpp file
+// References: https://github.com/azerothcore/mod-reward-shop
+
+case X: /* Subir de Nivel */
+// X = Number you want
+    if (player->getLevel() < 80) {
+        player->SetLevel(80);
+        player->SetUInt32Value(PLAYER_XP, 0);
+        player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, 0);
+        player->SetUInt32Value(PLAYER_FIELD_MAX_LEVEL, 80);
+        player->UpdateSkillsToMaxSkillsForLevel();
+        ChatHandler(player->GetSession()).PSendSysMessage("String that congratulates the user on reaching level 80.");
+    } else {
+        ChatHandler(player->GetSession()).PSendSysMessage("String that tells that the character entering the code is already 80.");
+    }
+    break;
