@@ -1,1 +1,4 @@
-
+Sistema básico de registro en PHP para empezar a maniquear buenas querys y seguras.
+Este código es básico y le faltan muchos sistemas de protección, es solo un código base funcional que funciona con la encriptación correcta actualizada el 05/07/2023 [dd-mm-yyyy].
+Si lo utilizaras con fines comerciales, se recomienda modificarlo completamente y solo usar su lógica.
+Referencias: https://github.com/LeuanN/AzerothCore-RegistrationWeb
