@@ -1,14 +1,26 @@
 // Using: the non loader .cpp file
 // References: https://github.com/azerothcore/mod-reward-shop
-
+// ¿Why 79 and not 80?... Simple: BUG.
 case X: /* Subir de Nivel */
 // X = Number you want
     if (player->getLevel() < 80) {
-        player->SetLevel(80);
-        player->SetUInt32Value(PLAYER_XP, 0);
-        player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, 0);
+        player->SetLevel(79);
+        player->SetUInt32Value(PLAYER_XP, 1670800);
+        player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, 1670800);
         player->SetUInt32Value(PLAYER_FIELD_MAX_LEVEL, 80);
         player->UpdateSkillsToMaxSkillsForLevel();
+        player->ModifyMoney(QUANTITY);
+        player->TeleportTo(571, 5804.56f, 647.25f, 647.87f, 3.78f); // Dalaran
+        player->ModifyHonorPoints(QUANTITY);
+        player->AddItem(ITEMID, QUANTITY);
+    
+    // Reputación a Exaltado
+    if (player->GetTeamId() == HORDE) {
+        player->SetReputation(76, 84000);
+    }
+    else if (player->GetTeamId() == ALLIANCE) {
+        player->SetReputation(72, 84000);
+    }
         ChatHandler(player->GetSession()).PSendSysMessage("String that congratulates the user on reaching level 80.");
     } else {
         ChatHandler(player->GetSession()).PSendSysMessage("String that tells that the character entering the code is already 80.");
